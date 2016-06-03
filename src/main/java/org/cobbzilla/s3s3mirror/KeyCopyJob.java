@@ -40,6 +40,7 @@ public class KeyCopyJob extends KeyJob {
             if (options.isDryRun()) {
                 log.info("Would have copied " + key + " to destination: " + keydest);
             } else {
+                sourceMetadata.setCacheControl("public,max-age=2592000");
                 if (keyCopied(sourceMetadata, objectAcl)) {
                     context.getStats().objectsCopied.incrementAndGet();
                 } else {
